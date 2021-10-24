@@ -31,17 +31,25 @@ Hope you liked our project!
 
 "@
 
+# Welcome
 Write-Output $WelcomeText | Green
 Write-Output $RepoText | Blue
+
+# Setup
 Write-Output @"
 <-- Installing Dependencies -->
 
 "@ | Yellow
+npm i -g yarn
 yarn
+
+# Running
 Write-Output @"
 
 <-- Running the project -->
 "@ | Yellow
 Write-Output "-> You can stop the project any time by pressing CTRL+C." | Blue
 npm run dev
+
+# Exit
 Write-Output $ExitText | Green
