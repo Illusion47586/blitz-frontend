@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 
-function App() {
+const App = () => {
+  const location = useLocation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch location={location}>
+      <Route exact path="/">
+        <Redirect to="/home" />
+      </Route>
+      <Route path="/home">
+        <div />
+      </Route>
+      <Route path="*">{/* 404 */}</Route>
+    </Switch>
   );
-}
+};
 
 export default App;

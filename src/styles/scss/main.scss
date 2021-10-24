@@ -1,0 +1,52 @@
+@use './base/typography';
+@use './base/constants';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  font-size: 16px;
+  overflow-x: hidden;
+  background-color: constants.$bg-color-primary;
+
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+a.link {
+  color: constants.$color-highlight;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    height: 2px;
+    background-color: constants.$color-highlight;
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    &::after {
+      width: 0;
+    }
+  }
+
+  &:active {
+    color: constants.$color-highlight;
+  }
+}
