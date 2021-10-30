@@ -1,5 +1,5 @@
-@use './base/typography';
-@use './base/constants';
+@use "./base/typography";
+@use "./base/constants";
 
 * {
   margin: 0;
@@ -21,6 +21,16 @@ body,
     opacity: 0;
     visibility: hidden;
   }
+}
+
+#root {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(10, auto);
+  height: 100vh;
+  gap: 10px;
+  max-width: min(1200px, 80%);
+  margin: 0 auto;
 }
 
 a.link {

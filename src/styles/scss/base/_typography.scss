@@ -1,10 +1,18 @@
-@use './constants';
+@use "./constants";
+
+@font-face {
+  font-family: "Maragsa Display";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Maragsa Display"),
+    url("../../assets/fonts/Maragsâ-Display.otf") format("opentype");
+}
 
 html,
 #root {
   font-size: 16px;
   line-height: 22px;
-  color: white;
+  color: constants.$text-color-primary;
 }
 
 body,
@@ -19,12 +27,9 @@ span.color_white {
   color: rgba(255, 255, 255, 0.6);
 }
 
-span.text_highlight {
+.text_highlight {
   color: constants.$color-highlight;
-  // background: constants.$gradient-highlight;
-  // background-clip: text;
-  // -webkit-background-clip: text;
-  // -webkit-text-fill-color: transparent;
+  font-family: "Maragsa Display";
 }
 
 h1,

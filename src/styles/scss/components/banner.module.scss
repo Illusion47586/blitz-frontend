@@ -1,0 +1,31 @@
+@use "../base/mixins" as *;
+@use "../base/constants" as *;
+
+.banner {
+  grid-column: 1 / 13;
+  padding: 20px 40px;
+  background: $gradient-highlight;
+  color: $bg-color-primary;
+  @include center;
+  flex-direction: column;
+  border-radius: $border-radius-more-rounded;
+  border: 10px outset rgba($color-highlight-dark, 0.5);
+  box-shadow: 0 0 20px inset rgba(black, 0.05);
+
+  h2 {
+    font-family: "Maragsa Display";
+    letter-spacing: 1.5px;
+  }
+
+  button {
+    margin: 0.5em 0;
+    @include center;
+    border-radius: $border-radius-less-rounded;
+    border: none;
+    cursor: pointer;
+    padding: 10px 25px;
+    font-size: 1.5em;
+    background-color: $text-color-primary;
+    color: $bg-color-primary;
+  }
+}

@@ -1,0 +1,71 @@
+@use "../base/mixins" as *;
+@use "../base/constants" as *;
+
+.button {
+  @include center;
+  height: min-content;
+  width: min-content;
+  border-radius: $border-radius-less-rounded;
+  border: none;
+  cursor: pointer;
+  @include defaultTransition;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  box-shadow: 0 7px 15px rgba($color-highlight-dark, 0.5);
+  transform: translateY(-5px);
+
+  div {
+    @include center;
+    padding: 15px 30px;
+    height: min-content;
+    width: max-content;
+    overflow: hidden;
+    box-shadow: 0 0 20px inset rgba(black, 0.05);
+
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 1.5em;
+      font-weight: 500;
+      color: $bg-color-primary;
+      @include defaultTransition;
+      overflow: hidden;
+    }
+
+    svg {
+      margin-left: 0.5em;
+      font-size: 1.5em;
+      color: $bg-color-primary;
+      @include defaultTransition;
+    }
+    z-index: 100;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 110%;
+    aspect-ratio: 1 / 1;
+    @include defaultTransition;
+    transition-duration: 0.7s;
+    background: $gradient-highlight;
+    z-index: 0;
+    transform: rotateZ(-calc(random(90) + 180) + deg);
+  }
+
+  &:hover {
+    transform: translateY(0);
+    box-shadow: 0 0 0 rgba($color-highlight-darker, 0);
+
+    &::after {
+      transform: rotateZ(calc(random(90) + 180) + deg);
+    }
+
+    div {
+      svg {
+        transform: translateX(+5px);
+      }
+    }
+  }
+}

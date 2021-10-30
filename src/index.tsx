@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
+import "./assets/fonts/Maragsâ-Display.otf";
 import "./styles/css/main.css";
 import App from "./App";
 import "./utils/dropConsole.ts";
 // import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
