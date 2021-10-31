@@ -71,37 +71,35 @@ nav.nav {
       }
     }
 
-    &.menu {
-      li {
-        width: 3em;
-        height: 3em;
-        border-radius: 100%;
-        @include mixins.center;
-        display: inline-flex;
-        border: 2px solid transparent;
+    &.menu li {
+      width: 3em;
+      height: 3em;
+      border-radius: 100%;
+      @include mixins.center;
+      display: inline-flex;
+      border: 2px solid transparent;
+      @include mixins.defaultTransition;
+
+      .icon {
+        font-size: 1.25em;
+        color: $text-color-secondary;
         @include mixins.defaultTransition;
 
+        &.active {
+          color: $text-color-primary;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-right: 0.25em;
+      }
+
+      &:hover {
+        background-color: rgba($color-highlight, 0.3);
+        border: 2px solid $color-highlight;
+
         .icon {
-          font-size: 1.25em;
-          color: $text-color-secondary;
-          @include mixins.defaultTransition;
-
-          &.active {
-            color: $text-color-primary;
-          }
-        }
-
-        &:not(:last-child) {
-          margin-right: 0.25em;
-        }
-
-        &:hover {
-          background-color: rgba($color-highlight, 0.3);
-          border: 2px solid $color-highlight;
-
-          .icon {
-            color: $text-color-primary;
-          }
+          color: $text-color-primary;
         }
       }
     }
