@@ -1,4 +1,4 @@
-@use "../base/mixins";
+@use "../base/mixins" as *;
 @use "../base/constants" as *;
 
 nav.nav {
@@ -35,7 +35,7 @@ nav.nav {
         a {
           text-decoration: none;
           position: relative;
-          @include mixins.defaultTransition;
+          @include defaultTransition;
           color: $text-color-secondary;
           font-weight: 400;
 
@@ -52,7 +52,7 @@ nav.nav {
             width: $bar-size;
             background-color: $color-highlight-dark;
             opacity: 0;
-            @include mixins.defaultTransition;
+            @include defaultTransition;
           }
 
           &:hover {
@@ -75,15 +75,15 @@ nav.nav {
       width: 3em;
       height: 3em;
       border-radius: 100%;
-      @include mixins.center;
+      @include center;
       display: inline-flex;
       border: 2px solid transparent;
-      @include mixins.defaultTransition;
+      @include defaultTransition;
 
       .icon {
         font-size: 1.25em;
         color: $text-color-secondary;
-        @include mixins.defaultTransition;
+        @include defaultTransition;
 
         &.active {
           color: $text-color-primary;
