@@ -3,6 +3,7 @@ import React, { Dispatch, MouseEventHandler, SetStateAction } from "react";
 import styles from "../styles/css/components/colorPicker.module.css";
 
 interface Props {
+  color: string;
   setColor: Dispatch<SetStateAction<string>>;
 }
 
@@ -15,8 +16,6 @@ const ColorPicker = (props: Props) => {
     ["#ffffff", "white"],
     ["#FFCD42", "yellow"],
   ]);
-
-  const onClick: MouseEventHandler<HTMLDivElement> = (e) => {};
 
   return (
     <div className={styles.picker}>

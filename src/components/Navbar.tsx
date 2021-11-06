@@ -1,4 +1,4 @@
-import { Bag, MagnifyingGlass, User } from "phosphor-react";
+import { MagnifyingGlass, User } from "phosphor-react";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
@@ -24,8 +24,13 @@ const Navbar = (props: Props) => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/blog" activeClassName={styles.active}>
-            Blog
+          <NavLink to="/upload" activeClassName={styles.active}>
+            Upload
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/cart" activeClassName={styles.active}>
+            Cart
           </NavLink>
         </li>
         <li>
@@ -37,9 +42,6 @@ const Navbar = (props: Props) => {
       <ul className={styles.menu}>
         <li title="Search">
           <MagnifyingGlass className={styles.icon} />
-        </li>
-        <li title="Bag">
-          <Bag className={styles.icon} />
         </li>
         <li title="Profile">
           <User className={styles.icon} />

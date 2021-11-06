@@ -1,0 +1,67 @@
+@use "../base/mixins" as *;
+@use "../base/constants" as *;
+
+h3 {
+  font-family: "Maragsa Display";
+  letter-spacing: 1.5px;
+  margin: 0;
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+}
+
+.image {
+  grid-column: 1 / 7;
+  grid-row: 3 / 10;
+  @include center;
+  flex-direction: column;
+
+  label {
+    margin-top: 2em;
+    border: 2px dashed $color-highlight-dark;
+    border-radius: $border-radius-less-rounded;
+    cursor: pointer;
+    @include defaultTransition;
+    @include center;
+
+    svg {
+      margin-left: 15px;
+      font-size: 1.5em;
+      @include defaultTransition;
+    }
+
+    h4 {
+      padding: 0;
+      display: inline-block;
+      margin: 10px 20px;
+      margin-left: 10px;
+      font-size: 1.25em;
+      @include defaultTransition;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    &:hover {
+      background-color: $color-highlight-darker;
+      border: 2px dashed transparent;
+
+      h4,
+      svg {
+        color: white;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 80%;
+    object-fit: contain;
+  }
+}
+
+.data {
+  grid-column: 7 / -1;
+  grid-row: 3 / 10;
+  @include center;
+}

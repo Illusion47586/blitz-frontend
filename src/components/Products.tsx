@@ -25,7 +25,7 @@ enum RequestState {
   loaded,
 }
 
-const types = ["shirt", "pant", "shoe", "tshirt"];
+const types = ["Shirt", "Tshirt", "Pant", "Shoe"];
 
 const Products = (props: Props) => {
   const history = useHistory();
@@ -41,7 +41,7 @@ const Products = (props: Props) => {
 
   const getProducts = async () => {
     setState(RequestState.loading);
-    query.set("type", type);
+    query.set("type", type.toLowerCase());
     query.set("color", color);
     const url = "https://blitz-db-service.herokuapp.com/products" + "?" + query;
     const response = await axios.get(url);
@@ -82,8 +82,8 @@ const Products = (props: Props) => {
 
   const clickHandler: MouseEventHandler<HTMLLIElement> = async (e) => {
     const text = e.currentTarget.querySelector("p")?.innerText;
-    setType(text!);
-    query.set("type", text!);
+    setType(text!.toLowerCase());
+    query.set("type", text!.toLowerCase());
     history.push(location.pathname + "?" + query.toString());
   };
 
@@ -99,7 +99,7 @@ const Products = (props: Props) => {
             <p>{type}</p>
           </li>
         ))}
-        <ColorPicker setColor={setColor} />
+        <ColorPicker color={color} setColor={setColor} />
       </ul>
       <div className={styles.catalogue}>
         {state === RequestState.loaded ? (

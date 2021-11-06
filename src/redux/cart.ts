@@ -38,8 +38,8 @@ const cartSlice = createSlice({
        */
       axios
         .post(process.env.BACKEND_URL! + "/buy", {
-          top: state.items[0],
-          bottom: state.items[1],
+          top: state.items[0].id,
+          bottom: state.items[1].id,
         })
         .then((response) => {
           if (response.status === 201) window.alert("Order successful!");

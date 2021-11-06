@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Compare from "./pages/Compare";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
+import Upload from "./pages/Upload";
 
 const App = () => {
   const location = useLocation();
@@ -23,6 +24,9 @@ const App = () => {
         </Route>
         <Route path="/compare">
           <Compare />
+        </Route>
+        <Route path="/upload">
+          <Upload />
         </Route>
         <Route path="*">404</Route>
       </Switch>

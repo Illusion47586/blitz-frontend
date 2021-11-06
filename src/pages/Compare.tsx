@@ -3,7 +3,8 @@ import { ArrowLeft, ArrowRight } from "phosphor-react";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import Button from "../components/Button";
-import { ProductType } from "../redux/cart";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { addItem, ProductType, selectCart } from "../redux/cart";
 
 import styles from "../styles/css/pages/compare.module.css";
 
@@ -29,6 +30,9 @@ const Compare = (props: Props) => {
     null
   );
 
+  const cart = useAppSelector(selectCart);
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
     axios
       .get(
@@ -48,10 +52,18 @@ const Compare = (props: Props) => {
       });
   }, []);
 
+  const buy = (product: ProductType) => {
+    dispatch(addItem(product));
+  };
+
   return (
     <div className={styles.comparePage}>
       <div className={styles.current}>
-        <Button className={styles.addToBag} text="Add to Bag" />
+        <Button
+          className={styles.addToBag}
+          text="Add to Bag"
+          onClick={() => buy(currentProduct!)}
+        />
 
         <div className={styles.product}>
           <h3>{currentProduct?.name}</h3>
