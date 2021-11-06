@@ -43,9 +43,10 @@ const Products = (props: Props) => {
     setState(RequestState.loading);
     query.set("type", type);
     query.set("color", color);
-    const url = "http://localhost:8000/products" + "?" + query;
+    const url = "https://blitz-db-service.herokuapp.com/products" + "?" + query;
     const response = await axios.get(url);
     if (response.status === 200) {
+      console.log(response);
       let prod: ProductType[] = [];
       setProducts([]);
       for (let index = 0; index < response.data.products.length; index++) {
