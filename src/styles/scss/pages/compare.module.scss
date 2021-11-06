@@ -1,0 +1,110 @@
+@use "../base/mixins" as *;
+@use "../base/constants" as *;
+
+.comparePage {
+  grid-column: 1 / 13;
+  grid-row: 2 / span 8;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 100%;
+  gap: 15px 15px;
+
+  div {
+    grid-row: 1 / 2;
+    height: 100%;
+
+    button.addToBag {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 30%);
+    }
+  }
+
+  .current {
+    grid-column: 1 / 2;
+    border-radius: $border-radius-less-rounded;
+    background-color: rgba($color-highlight, 0.3);
+    @include center;
+    position: relative;
+  }
+
+  .other {
+    grid-column: 2 / 3;
+    background-color: rgba($color-highlight-dark, 0.3);
+    border-radius: $border-radius-less-rounded;
+    position: relative;
+    @include center;
+    align-items: flex-start;
+
+    button#previous,
+    button#next {
+      z-index: 100;
+      border-radius: 0;
+      background-color: $color-highlight-dark;
+      border: none;
+      padding: 10px 10px 7px;
+      position: absolute;
+      cursor: pointer;
+      @include defaultTransition;
+
+      svg {
+        color: white;
+        font-size: 3em;
+      }
+
+      &:hover {
+        background-color: $color-highlight-darker;
+      }
+    }
+
+    button#previous {
+      bottom: 0;
+      left: 0;
+      border-top-right-radius: $border-radius-less-rounded;
+      border-bottom-left-radius: $border-radius-less-rounded;
+    }
+
+    button#next {
+      bottom: 0;
+      right: 0;
+      border-bottom-right-radius: $border-radius-less-rounded;
+      border-top-left-radius: $border-radius-less-rounded;
+    }
+  }
+}
+
+.product {
+  // display: inline-flex;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  min-width: 100%;
+  border-radius: $border-radius-less-rounded;
+  background-color: rgba($color-highlight-dark, 0.3);
+
+  //   padding: 20px;
+
+  h3 {
+    font-family: "Maragsa Display";
+    letter-spacing: 1.5px;
+    margin: 0;
+    padding: 0;
+    // margin-top: 10px;
+    color: $color-highlight-darker;
+    height: 10%;
+    vertical-align: bottom;
+    text-align: center;
+  }
+
+  .product_image {
+    max-height: 90%;
+    background-color: red;
+    border-radius: $border-radius-less-rounded;
+    overflow: hidden;
+
+    background-position: bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}

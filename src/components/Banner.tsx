@@ -5,7 +5,9 @@ import styles from "../styles/css/components/banner.module.css";
 interface Props {}
 
 const Banner = (props: Props) => {
-  const [visible, setVisible] = useState<boolean>(true);
+  const [visible, setVisible] = useState<boolean>(
+    sessionStorage.getItem("banner") ? false : true
+  );
 
   const hide = () => {
     sessionStorage.setItem("banner", "false");

@@ -26,7 +26,7 @@ body,
 #root {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(10, auto);
+  grid-template-rows: repeat(10, 1fr);
   height: 100vh;
   gap: 10px;
   max-width: min(1200px, 80%);

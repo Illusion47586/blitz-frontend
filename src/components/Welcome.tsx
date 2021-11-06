@@ -14,7 +14,7 @@ const Welcome = (props: Props) => {
         This project was made as submission for myntra hackerramp 2021 by team
         Blitz.
       </p>
-      <Button />
+      <Button text="Start" />
     </section>
   );
 };

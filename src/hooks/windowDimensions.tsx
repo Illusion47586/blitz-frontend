@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function getWindowDimensions() {
+const getWindowDimensions = () => {
   const { innerWidth: width, innerHeight: height } = window;
   const isMobile = width <= 468;
   const isPerfect = width <= 846;
@@ -10,7 +10,7 @@ function getWindowDimensions() {
     isMobile,
     isPerfect,
   };
-}
+};
 
 export default function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(

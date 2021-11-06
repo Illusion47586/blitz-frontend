@@ -2,7 +2,7 @@
 @use "../base/constants" as *;
 
 nav.nav {
-  @include mixins.center;
+  @include center;
   justify-content: space-between;
   grid-column: 1 / 13;
   grid-row: 1 / 2;

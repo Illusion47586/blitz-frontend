@@ -3,13 +3,16 @@ import React from "react";
 
 import styles from "../styles/css/components/button.module.css";
 
-interface Props {}
+interface Props {
+  className?: string;
+  text: string;
+}
 
 const Button = (props: Props) => {
   return (
-    <button className={styles.button}>
+    <button className={`${styles.button} ${props.className}`}>
       <div>
-        <p>Start</p>
+        <p>{props.text}</p>
         <ArrowRight weight="bold" />
       </div>
     </button>
