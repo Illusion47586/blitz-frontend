@@ -31,8 +31,8 @@ const Products = (props: Props) => {
   const history = useHistory();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
-  const [type, setType] = useState(types[0]);
-  const [color, setColor] = useState<string>("black");
+  const [type, setType] = useState(query.get("type") ?? types[0]);
+  const [color, setColor] = useState<string>(query.get("color") ?? "black");
   const [state, setState] = useState<RequestState>(RequestState.loading);
   const [error, setError] = useState<string>("");
   const [products, setProducts] = useState<ProductType[]>([]);
