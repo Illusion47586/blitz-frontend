@@ -37,7 +37,7 @@ const cartSlice = createSlice({
        * Add data into the server
        */
       axios
-        .post("http://localhost:8000/buy", {
+        .post(process.env.REACT_APP_BACKEND_URL + "/buy", {
           top: state.items[0].id,
           bottom: state.items[1].id,
         })

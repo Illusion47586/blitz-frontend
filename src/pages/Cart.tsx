@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../components/Button";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { buy, removeItem, selectCart } from "../redux/cart";
+import { buy, selectCart } from "../redux/cart";
 
 import styles from "../styles/css/pages/cart.module.css";
 

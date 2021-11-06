@@ -37,9 +37,7 @@ const Compare = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://blitz-db-service.herokuapp.com/product?id=${query.get("id")}`
-      )
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product?id=${query.get("id")}`)
       .then((response) => {
         console.log(response.data);
         setCurrentProduct({
@@ -53,7 +51,11 @@ const Compare = (props: Props) => {
         setLoading(RequestState.loaded);
       });
     axios
-      .get(`http://localhost:8000/recommendations?id=${query.get("id")}`)
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/recommendations?id=${query.get(
+          "id"
+        )}`
+      )
       .then((response) => {
         if (response.status === 200) {
           const r = response.data.map((e: any) => {

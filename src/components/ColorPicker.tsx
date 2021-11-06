@@ -1,4 +1,4 @@
-import React, { Dispatch, MouseEventHandler, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import styles from "../styles/css/components/colorPicker.module.css";
 

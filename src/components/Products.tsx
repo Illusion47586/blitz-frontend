@@ -43,7 +43,7 @@ const Products = (props: Props) => {
     setState(RequestState.loading);
     query.set("type", type.toLowerCase());
     query.set("color", color);
-    const url = "https://blitz-db-service.herokuapp.com/products" + "?" + query;
+    const url = process.env.REACT_APP_BACKEND_URL + "/products" + "?" + query;
     const response = await axios.get(url);
     if (response.status === 200) {
       // console.log(response);

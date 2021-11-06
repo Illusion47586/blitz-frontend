@@ -1,7 +1,7 @@
 import axios from "axios";
 import { encode } from "base64-arraybuffer";
 import { FileArrowUp } from "phosphor-react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import styles from "../styles/css/pages/upload.module.css";
 
@@ -23,14 +23,17 @@ const Upload = (props: Props) => {
       console.log("starting");
       const buffer = await file.arrayBuffer();
       const base64 = "data:image/png;base64," + encode(buffer);
-      const response = await axios.post("http://localhost:8000/upload", {
-        image: base64,
-      });
+      const response = await axios.post(
+        process.env.REACT_APP_BACKEND_URL + "/upload",
+        {
+          image: base64,
+        }
+      );
       console.log(response);
       if (response.data.length > 0) {
         setImage(response.data);
         const res = await axios.get(
-          "https://blitz-tf.herokuapp.com/get-tags?url=" + response.data
+          process.env.REACT_APP_TF_URL + "/get-tags?url=" + response.data
         );
         console.log(res.data);
         setRes(res.data);
