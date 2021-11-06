@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Cart from "./pages/Cart";
 import Compare from "./pages/Compare";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
@@ -27,6 +28,9 @@ const App = () => {
         </Route>
         <Route path="/upload">
           <Upload />
+        </Route>
+        <Route path="/cart">
+          <Cart />
         </Route>
         <Route path="*">404</Route>
       </Switch>

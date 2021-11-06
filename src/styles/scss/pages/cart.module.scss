@@ -1,0 +1,46 @@
+@use "../base/mixins" as *;
+@use "../base/constants" as *;
+
+section.cart {
+  grid-row: 2 / -1;
+  grid-column: 1 / -1;
+
+  ul {
+    list-style: none;
+
+    li {
+      @include center;
+      justify-content: start;
+      max-width: min-content;
+      max-height: 200px;
+      padding: 15px;
+      border: 2px solid rgba(lightgrey, 0.5);
+      border-radius: $border-radius-normal;
+      position: relative;
+
+      img {
+        max-height: 170px;
+        border-radius: $border-radius-less-rounded;
+        margin-right: 15px;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 1em;
+      }
+
+      button {
+        border-radius: $border-radius-normal;
+        outline: none;
+        padding: 10px 20px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: red;
+        border: none;
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -46,7 +46,7 @@ const Products = (props: Props) => {
     const url = "https://blitz-db-service.herokuapp.com/products" + "?" + query;
     const response = await axios.get(url);
     if (response.status === 200) {
-      console.log(response);
+      // console.log(response);
       let prod: ProductType[] = [];
       setProducts([]);
       for (let index = 0; index < response.data.products.length; index++) {

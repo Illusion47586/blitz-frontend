@@ -29,6 +29,8 @@ const Compare = (props: Props) => {
   const [currentProduct, setCurrentProduct] = useState<ProductType | null>(
     null
   );
+  const [recommendations, setRecommendations] = useState<ProductType[]>([]);
+  const [index, setIndex] = useState<number>(0);
 
   const cart = useAppSelector(selectCart);
   const dispatch = useAppDispatch();
@@ -49,6 +51,16 @@ const Compare = (props: Props) => {
           color: response.data.color,
         });
         setLoading(RequestState.loaded);
+      });
+    axios
+      .get(`http://localhost:8000/recommendations?id=${query.get("id")}`)
+      .then((response) => {
+        if (response.status === 200) {
+          const r = response.data.map((e: any) => {
+            const p: ProductType = { ...e };
+          });
+          setRecommendations(r);
+        }
       });
   }, []);
 
@@ -74,21 +86,43 @@ const Compare = (props: Props) => {
         </div>
       </div>
       <div className={styles.other}>
-        <button id={styles.previous}>
-          <ArrowLeft />
-        </button>
-        <button id={styles.next}>
-          <ArrowRight />
-        </button>
-        <Button className={styles.addToBag} text="Add to Bag" />
+        {recommendations.length > 0 ? (
+          <>
+            <button
+              id={styles.previous}
+              onClick={() => {
+                if (index > 0) setIndex(index - 1);
+              }}
+            >
+              <ArrowLeft />
+            </button>
+            <button
+              id={styles.next}
+              onClick={() => {
+                if (index < recommendations.length - 2) setIndex(index + 1);
+              }}
+            >
+              <ArrowRight />
+            </button>
+            <Button
+              className={styles.addToBag}
+              text="Add to Bag"
+              onClick={() => buy(recommendations[index]!)}
+            />
 
-        <div className={styles.product}>
-          <h3>{sampleProduct.name}</h3>
-          <div
-            className={styles.product_image}
-            style={{ backgroundImage: `url(${sampleProduct.imageUrl})` }}
-          />
-        </div>
+            <div className={styles.product}>
+              <h3>{recommendations[index].name}</h3>
+              <div
+                className={styles.product_image}
+                style={{
+                  backgroundImage: `url(${recommendations[index].imageUrl})`,
+                }}
+              />
+            </div>
+          </>
+        ) : (
+          <p>loading</p>
+        )}
       </div>
     </div>
   );

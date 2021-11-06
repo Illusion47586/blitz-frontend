@@ -41,13 +41,6 @@ const Upload = (props: Props) => {
     }
   };
 
-  const getTags = async () => {
-    const res = await axios.get(
-      "https://blitz-tf.herokuapp.com/get-tags?url=" + image
-    );
-    setRes(res.data);
-  };
-
   //   useEffect(() => {
   //     if (ref.current?.value) {
   //       console.log(ref.current.files![0]);
