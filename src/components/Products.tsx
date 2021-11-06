@@ -31,6 +31,7 @@ const Products = (props: Props) => {
   const history = useHistory();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
+  const [type, setType] = useState(types[0]);
   const [color, setColor] = useState<string>("black");
   const [state, setState] = useState<RequestState>(RequestState.loading);
   const [error, setError] = useState<string>("");
@@ -40,6 +41,8 @@ const Products = (props: Props) => {
 
   const getProducts = async () => {
     setState(RequestState.loading);
+    query.set("type", type);
+    query.set("color", color);
     const url = "http://localhost:8000/products" + "?" + query;
     const response = await axios.get(url);
     if (response.status === 200) {
@@ -78,6 +81,7 @@ const Products = (props: Props) => {
 
   const clickHandler: MouseEventHandler<HTMLLIElement> = async (e) => {
     const text = e.currentTarget.querySelector("p")?.innerText;
+    setType(text!);
     query.set("type", text!);
     history.push(location.pathname + "?" + query.toString());
   };
