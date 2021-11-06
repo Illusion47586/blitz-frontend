@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 
 import styles from "../styles/css/components/products.module.css";
 import { ProductType } from "../redux/cart";
@@ -8,6 +8,8 @@ import axios from "axios";
 import Lottie from "lottie-react";
 
 import loadingAnimation from "../assets/animation/loading.json";
+import { useHistory, useLocation } from "react-router-dom";
+import ColorPicker from "./ColorPicker";
 
 interface Props {}
 
@@ -23,25 +25,22 @@ enum RequestState {
   loaded,
 }
 
-const types = [];
+const types = ["shirt", "pant", "shoe", "tshirt"];
 
 const Products = (props: Props) => {
+  const history = useHistory();
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const [color, setColor] = useState<string>("black");
   const [state, setState] = useState<RequestState>(RequestState.loading);
   const [error, setError] = useState<string>("");
   const [products, setProducts] = useState<ProductType[]>([]);
 
-  const getProducts = async (
-    type?: string,
-    color?: string,
-    limit?: number,
-    skip?: number
-  ) => {
+  // let url = "https://blitz-db-service.herokuapp.com/products" + location.search;
+
+  const getProducts = async () => {
     setState(RequestState.loading);
-    let url = "https://blitz-db-service.herokuapp.com/products";
-    if (type) url += "?type=" + type;
-    if (color) url += "?color=" + color;
-    if (limit) url += "?limit=" + limit;
-    if (skip) url += "?skip=" + skip;
+    const url = "http://localhost:8000/products" + "?" + query;
     const response = await axios.get(url);
     if (response.status === 200) {
       let prod: ProductType[] = [];
@@ -70,47 +69,46 @@ const Products = (props: Props) => {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [location.search]);
+
+  useEffect(() => {
+    query.set("color", color);
+    history.push(location.pathname + "?" + query.toString());
+  }, [color]);
+
+  const clickHandler: MouseEventHandler<HTMLLIElement> = async (e) => {
+    const text = e.currentTarget.querySelector("p")?.innerText;
+    query.set("type", text!);
+    history.push(location.pathname + "?" + query.toString());
+  };
 
   return (
     <div className={styles.products}>
       <h2>Products</h2>
       <ul className={styles.categories}>
-        <li className={styles.selected}>
-          <p>Dresses</p>
-        </li>
-        <li>
-          <p>Pants</p>
-        </li>
-        <li>
-          <p>Shirt</p>
-        </li>
-        <li>
-          <p>Shoes</p>
-        </li>
-        <li>
-          <p>Shorts</p>
-        </li>
-        <li>
-          <p>Suit</p>
-        </li>
-        <li>
-          <p>Hoodie</p>
-        </li>
-        <li>
-          <p>Shoes</p>
-        </li>
-        <li>
-          <p>Skirt</p>
-        </li>
+        {types.map((type) => (
+          <li
+            className={query.get("type") === type ? styles.selected : undefined}
+            onClick={clickHandler}
+          >
+            <p>{type}</p>
+          </li>
+        ))}
+        <ColorPicker setColor={setColor} />
       </ul>
       <div className={styles.catalogue}>
-        {state === RequestState.loaded &&
-          products.map((product) => (
-            <Product key={product.id} product={product} />
-          ))}
-        {state === RequestState.loading && (
-          <Lottie animationData={loadingAnimation} />
+        {state === RequestState.loaded ? (
+          products.length > 0 ? (
+            products.map((product) => (
+              <Product key={product.id} product={product} />
+            ))
+          ) : (
+            <p>No products found for the category.</p>
+          )
+        ) : (
+          state === RequestState.loading && (
+            <Lottie animationData={loadingAnimation} />
+          )
         )}
         {state === RequestState.error && (
           <p style={{ color: "red" }}>{error}</p>
