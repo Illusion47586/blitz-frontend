@@ -31,11 +31,6 @@ const Items = () => {
             Cart
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/about" activeClassName={styles.active}>
-            About us
-          </NavLink>
-        </li>
       </ul>
       <ul className={styles.menu}>
         <li title="Search">
