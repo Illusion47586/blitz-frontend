@@ -2,7 +2,7 @@
 @use "../base/constants" as *;
 
 section.welcome {
-  grid-row: 2 / 8;
+  grid-row: 2 / -1;
   grid-column: 1 / 13;
   @include center;
   flex-direction: column;
@@ -10,11 +10,23 @@ section.welcome {
 
   h1 {
     font-family: "Maragsa Display";
+    padding: 0;
     span {
       background: $gradient-highlight;
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+  }
+
+  button {
+    margin-top: 1em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  section.welcome {
+    padding: 0;
+    justify-content: flex-start;
   }
 }

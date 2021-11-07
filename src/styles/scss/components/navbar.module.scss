@@ -15,7 +15,8 @@ nav.nav {
     font-size: 2em;
   }
 
-  ul {
+  ul,
+  .menuBg .menu ul {
     list-style: none;
     margin: 0;
 
@@ -100,6 +101,36 @@ nav.nav {
 
         .icon {
           color: $text-color-primary;
+        }
+      }
+    }
+  }
+
+  .menuBG {
+    width: 100vw;
+    height: 100vh;
+    bottom: 0;
+    position: absolute;
+    backdrop-filter: blur(4px);
+
+    .menu {
+      position: absolute;
+      padding: 20px;
+      background-color: white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      ul {
+        &.tabs li {
+          display: block;
+          a {
+            font-size: 1.25em;
+          }
+
+          &:not(:last-child) {
+            margin-bottom: 1em;
+          }
         }
       }
     }

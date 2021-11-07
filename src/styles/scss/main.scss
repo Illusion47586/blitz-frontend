@@ -25,6 +25,7 @@ body,
 }
 
 #root {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(10, 1fr);
@@ -32,6 +33,12 @@ body,
   gap: 10px;
   max-width: min(1200px, 80%);
   margin: 0 auto;
+}
+
+@media screen and (max-width: 450px) {
+  #root {
+    height: none;
+  }
 }
 
 a.link {

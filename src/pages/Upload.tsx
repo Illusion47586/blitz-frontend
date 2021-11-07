@@ -29,9 +29,11 @@ const Upload = (props: Props) => {
           image: base64,
         }
       );
-      console.log(response);
       if (response.data.length > 0) {
         setImage(response.data);
+        console.log(
+          process.env.REACT_APP_TF_URL + "/get-tags?url=" + response.data
+        );
         const res = await axios.get(
           process.env.REACT_APP_TF_URL + "/get-tags?url=" + response.data
         );
@@ -43,16 +45,6 @@ const Upload = (props: Props) => {
       alert("Only png images allowed with size less than 500KB.");
     }
   };
-
-  //   useEffect(() => {
-  //     if (ref.current?.value) {
-  //       console.log(ref.current.files![0]);
-
-  //       // setState(RequestState.loaded);
-  //       // setImage(ref.current.value);
-  //       upload(ref.current.files![0]);
-  //     }
-  //   }, [ref]);
 
   return (
     <>
