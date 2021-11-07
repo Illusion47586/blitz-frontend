@@ -58,9 +58,21 @@ const Compare = (props: Props) => {
       )
       .then((response) => {
         if (response.status === 200) {
-          const r = response.data.map((e: any) => {
-            const p: ProductType = { ...e };
-          });
+          // console.log(response);
+          const r = [];
+          for (let index = 0; index < response.data.length; index++) {
+            const e = response.data[index];
+            if (e) {
+              const p: ProductType = {
+                ...e,
+                id: e._id,
+                imageUrl: e.image_url,
+                subType: e.sub_type,
+              };
+              r.push(p);
+            }
+          }
+          console.log(r);
           setRecommendations(r);
         }
       });
