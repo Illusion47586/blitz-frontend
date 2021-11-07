@@ -48,6 +48,7 @@ const cartSlice = createSlice({
             state = initialState;
             console.log(state);
             window.alert("Order successful!");
+            window.location.reload();
             return initialState;
           } else {
             console.error(response);
