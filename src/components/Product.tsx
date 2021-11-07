@@ -17,7 +17,7 @@ const Product = (props: Props) => {
 
   return (
     <div className={styles.item} onClick={onClick}>
-      <img src={props.product.imageUrl} />
+      <img src={props.product.imageUrl} alt={props.product.name} />
       {/* <div className={styles.details}>
         <h3>{props.product.name}</h3>
       </div> */}

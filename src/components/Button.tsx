@@ -1,4 +1,4 @@
-import { ArrowRight, Play } from "phosphor-react";
+import { ArrowRight } from "phosphor-react";
 import React from "react";
 
 import styles from "../styles/css/components/button.module.css";

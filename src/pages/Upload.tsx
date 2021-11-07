@@ -51,7 +51,9 @@ const Upload = (props: Props) => {
       <h3>Upload your image and see how our server responds!</h3>
 
       <div className={styles.image}>
-        {state === RequestState.loaded && <img src={image} />}
+        {state === RequestState.loaded && (
+          <img src={image} alt="Uploaded image" />
+        )}
         {state === RequestState.error ? (
           <p>Err</p>
         ) : (

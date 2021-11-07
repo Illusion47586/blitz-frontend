@@ -1,4 +1,4 @@
-import { List, MagnifyingGlass, User, X } from "phosphor-react";
+import { List, MagnifyingGlass, User } from "phosphor-react";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import useWindowDimensions from "../hooks/windowDimensions";

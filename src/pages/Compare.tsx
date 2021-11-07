@@ -8,11 +8,11 @@ import { addItem, ProductType, selectCart } from "../redux/cart";
 
 import styles from "../styles/css/pages/compare.module.css";
 
-const sampleProduct: ProductType = {
-  name: "Bingo Kingo",
-  imageUrl: "https://source.unsplash.com/800x800?mountain",
-  id: "ABCD",
-};
+// const sampleProduct: ProductType = {
+//   name: "Bingo Kingo",
+//   imageUrl: "https://source.unsplash.com/800x800?mountain",
+//   id: "ABCD",
+// };
 
 interface Props {}
 
@@ -32,7 +32,6 @@ const Compare = (props: Props) => {
   const [recommendations, setRecommendations] = useState<ProductType[]>([]);
   const [index, setIndex] = useState<number>(0);
 
-  const cart = useAppSelector(selectCart);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -76,7 +75,7 @@ const Compare = (props: Props) => {
           setRecommendations(r);
         }
       });
-  }, []);
+  });
 
   const buy = (product: ProductType) => {
     dispatch(addItem(product));
