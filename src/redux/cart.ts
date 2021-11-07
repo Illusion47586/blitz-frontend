@@ -24,7 +24,9 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<ProductType>) => {
-      if (state.items.length < 2) state.items.push(action.payload);
+      if (state.items.length < 2) {
+        state.items.push(action.payload);
+      }
     },
     removeItem: (state, action: PayloadAction<string>) => {
       const index: number = state.items.findIndex(
@@ -42,8 +44,12 @@ const cartSlice = createSlice({
           bottom: state.items[1].id,
         })
         .then((response) => {
-          if (response.status === 201) window.alert("Order successful!");
-          else {
+          if (response.status === 201) {
+            state = initialState;
+            console.log(state);
+            window.alert("Order successful!");
+            return initialState;
+          } else {
             console.error(response);
             window.alert("Order unsuccessful!");
           }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/Button";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { buy, selectCart } from "../redux/cart";
@@ -10,12 +10,19 @@ interface Props {}
 const Cart = (props: Props) => {
   const cart = useAppSelector(selectCart);
   const dispatch = useAppDispatch();
+  const [items, setItems] = useState(cart.items);
+
+  useEffect(() => {
+    console.log(cart);
+    setItems(cart.items);
+  }, [cart]);
+
   return (
     <section className={styles.cart}>
-      {cart.items.length > 0 ? (
+      {items.length > 0 ? (
         <>
           <ul>
-            {cart.items.map((item) => (
+            {items.map((item) => (
               <li key={item.id}>
                 <img src={item.imageUrl} />
                 <div>
