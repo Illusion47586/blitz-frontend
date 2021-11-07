@@ -71,11 +71,11 @@ const Compare = (props: Props) => {
               r.push(p);
             }
           }
-          console.log(r);
+          // console.log(r);
           setRecommendations(r);
         }
       });
-  });
+  }, []);
 
   const buy = (product: ProductType) => {
     dispatch(addItem(product));
